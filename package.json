@@ -1,19 +1,13 @@
 {
-  "name": "nodejs",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "Fredrick Fazbit",
+  "version": "0.1.0",
+  "description": "A Discord bot with goals.",
+  "main": "bot.js",
   "scripts": {
     "start": "node bot.js",
     "debug": "nodemon bot.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@replit/database": "^2.0.2",
-    "discord.js": "^14.3.0",
-    "node-fetch": "^3.2.6",
-    "nodemon": "^2.0.19"
-  }
+  "author": "Kingminer7",
+  "license": "ISC"
 }

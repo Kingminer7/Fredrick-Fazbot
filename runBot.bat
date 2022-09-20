@@ -1,6 +1,6 @@
 @echo off
 cls
-node bot.js
+npm run start
 echo Do you want to restart the bot?
 read varname
 if [$varname = y]

@@ -7,6 +7,7 @@ To edit settings, use /settings or !settings.
 
 # Self Hosting
 Go to discord.com/developers and create a bot. Do not lose the token.
+<br>
 Invite the bot to your server.
 Download this repository.
 Run setup.bat

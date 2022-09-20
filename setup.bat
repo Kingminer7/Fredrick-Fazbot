@@ -4,11 +4,6 @@ echo Make sure you have node.js version 16.9 and npm installed and working. This
 PAUSE
 npm i discordjs@14
 echo Discord.js and other dependencies have been installed.
-echo Would you like to run the bot? (Y or N)
-read varname
-cls
-if [$varname = y]
-then
-  runBot.bat
-fi
-PAUSE
+echo Make sure you type your bot token into Config.js.
+echo If you don't know how to do it, find a tutorial on YouTube. Too lengthy to put here.
+pause

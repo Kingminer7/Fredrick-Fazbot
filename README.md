@@ -7,7 +7,7 @@ Invite the bot at https://kingminer7.github.io/bots/0.
 To edit settings, use /settings or !settings. 
 
 # Self Hosting
-Go to discord.com/developers and create a bot. Do not lose the token.
+Go to https://discord.com/developers and create a bot. Do not lose the token.
 <br>
 Invite the bot to your server.
 <br>

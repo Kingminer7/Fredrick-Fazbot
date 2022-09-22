@@ -17,27 +17,31 @@ const client = new Client({
 client.commands = new Collection();
 client.commandArray = [];
 
-const cmdfiles = fs.readdirSync(`./Commands`).filter(file => file.endsWith(`.js`));
-for (const f of cmdfiles) {
-  const command = require(`./Commands/${f}`)
-  commands.set(command.data.name, command);
-  commandArray.push(command.data.toJSON())
-  console.log("Registering command " + command.data.name + ".")
-}
-const rest = new REST({ version: `9` }).setToken(process.env.token)
-try {
-  await rest.put( Routes.applicationCommands(clientId), {
-    body: commandArray,
-  })
-} catch (error) {
-  console.error(error)
+client.regC = async () => {
+  const cmdfiles = fs.readdirSync(`./Commands`).filter(file => file.endsWith(`.js`));
+  for (const f of cmdfiles) {
+    const command = require(`./Commands/${f}`)
+    commands.set(command.data.name, command);
+    commandArray.push(command.data.toJSON())
+    console.log("Registering command " + command.data.name + ".")
+  }
+  const rest = new REST({ version: `9` }).setToken(process.env.token)
+  try {
+    await rest.put( Routes.applicationCommands(clientId), {
+      body: commandArray,
+    })
+  } catch (error) {
+    console.error(error)
+  }
 }
 
-const eventFolders = fs.readdirSync("./Events").filter((file) => file.endsWith(".js"));
-for(const file of eventFiles) {
-  const event = require(`./Events/${file}`)
-  if(event.once) client.once(event.name, (...args) => event.execute(...args, client));
-  else client.on(event.name, (...args) => event.execute(...args, client));
+client.regE = = async () => {
+  const eventFolders = fs.readdirSync("./Events").filter((file) => file.endsWith(".js"));
+  for(const file of eventFiles) {
+    const event = require(`./Events/${file}`)
+    if(event.once) client.once(event.name, (...args) => event.execute(...args, client));
+    else client.on(event.name, (...args) => event.execute(...args, client));
+  }
 }
 
 client.emojilib = {

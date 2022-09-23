@@ -1,13 +1,16 @@
 {
-  "name": "Fredrick Fazbot",
-  "version": "0.1.0",
-  "description": "A Discord bot with goals.",
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "",
   "main": "bot.js",
   "scripts": {
-    "start": "node bot.js",
-    "debug": "nodemon bot.js"
+    "run": "node bot.js"
   },
   "keywords": [],
-  "author": "Kingminer7",
-  "license": "ISC"
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.4.0",
+    "node-fetch": "^3.2.6"
+  }
 }

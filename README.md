@@ -22,3 +22,6 @@ Change any other optional settings in Config.js
 Run runBot.bat
 <br>
 The bot should now be working.
+<br>
+# Hosting on Replit?
+Try using the [replit branch](https://github.com/Kingminer7/Fredrick-Fazbot/tree/replit)!

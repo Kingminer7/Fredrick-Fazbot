@@ -1,7 +1,7 @@
-const { Client, Collection, GatewayIntentBits } = require(`discord.js`);
+const { Client, Collection, GatewayIntentBits, REST, Routes } = require(`discord.js`);
 const fs = require(`fs`);
 
-const {Token} = require("./config.js");
+const { Token, ClientId} = require("./Config.js");
 
 const client = new Client({
   intents: [
@@ -17,6 +17,8 @@ const client = new Client({
 client.commands = new Collection();
 client.commandArray = [];
 
+const { commands, commandArray } = client
+
 client.regC = async () => {
   const cmdfiles = fs.readdirSync(`./Commands`).filter(file => file.endsWith(`.js`));
   for (const f of cmdfiles) {
@@ -25,9 +27,9 @@ client.regC = async () => {
     commandArray.push(command.data.toJSON())
     console.log("Registering command " + command.data.name + ".")
   }
-  const rest = new REST({ version: `9` }).setToken(process.env.token)
+  const rest = new REST({ version: `9` }).setToken(Token)
   try {
-    await rest.put( Routes.applicationCommands(clientId), {
+    await rest.put(Routes.applicationCommands(ClientId), {
       body: commandArray,
     })
   } catch (error) {
@@ -35,18 +37,19 @@ client.regC = async () => {
   }
 }
 
-client.regE = = async () => {
-  const eventFolders = fs.readdirSync("./Events").filter((file) => file.endsWith(".js"));
-  for(const file of eventFiles) {
+client.regE = async () => {
+  const eventFiles = fs.readdirSync("./Events").filter((file) => file.endsWith(".js"));
+  for (const file of eventFiles) {
     const event = require(`./Events/${file}`)
-    if(event.once) client.once(event.name, (...args) => event.execute(...args, client));
+    if (event.once) client.once(event.name, (...args) => event.execute(...args, client));
     else client.on(event.name, (...args) => event.execute(...args, client));
   }
 }
 
-client.emojilib = {
-  fazcoin = "<:fazcoin:1015807386826584064>",
-  fredrick_fazbot = "<:fredrick_fazbot:1015801229160501308>"
-}
+client.emojilib = {}
+client.emojilib.fazcoin = "<:fazcoin:1015807386826584064>"
+client.emojilib.fredrick_fazbot = "<:fredrick_fazbot:1015801229160501308>"
 
-client.login(token);
+client.login(Token)
+client.regC();
+client.regE();

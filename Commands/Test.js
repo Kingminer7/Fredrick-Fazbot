@@ -8,8 +8,6 @@ module.exports = {
         interaction.reply("Test Command")
     },
     async executePrefix(msg, client) {
-        msg.delete();
-        
-        msg.channel.send(`<@${msg.author.id}> used !test\n Test`);
+        msg.reply(`Test Command`);
     }
 }
